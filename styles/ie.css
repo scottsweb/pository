@@ -1,0 +1,24 @@
+#container 
+	{
+	margin-bottom: 20px;
+	}
+
+#slider
+	{
+	width: 500px;
+	height: 223px;
+	position: relative;
+	overflow: hidden;
+	}
+
+#nav ul li a.selected
+	{
+	color: #000 !important;
+	}
+
+#other-banner,
+#other-banner span
+	{
+	position: absolute;
+	display: block;
+	}

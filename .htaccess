@@ -1,0 +1,51 @@
+# mod_deflate sends compressed html to supported browsers
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule> 
+
+# set cache control for certain file types (1 MONTH)
+FileETag None
+<ifModule mod_headers.c>
+
+	Header unset Last-Modified
+  	Header unset ETag
+
+	<FilesMatch "\.(ico|jpg|jpeg|png|gif|swf|css|js|flv)$">
+		Header set Cache-Control "max-age=2419200 public"
+	</FilesMatch>
+</IfModule> 
+
+# re-write rules
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
+	
+	# To redirect all users to access the site WITHOUT the 'www.' prefix,	
+	RewriteCond %{HTTPS} !=on
+	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+
+	# Don't show directory listings for URLs which map to a directory.
+	Options -Indexes
+
+	# Block out any script trying to base64_encode crap to send via URL
+	RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+	
+	# Block out any script that includes a <script> tag in URL
+	RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+	
+	# Block out any script trying to set a PHP GLOBALS variable via URL
+	RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+	
+	# Block out any script trying to modify a _REQUEST variable via URL
+	RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+	
+	# Send all blocked request to homepage with 403 Forbidden error!
+	RewriteRule ^(.*)$ index.php [F,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+</IfModule>
