@@ -3,7 +3,7 @@
 ## Pository
 
 * Contributors: [@scottsweb](http://twitter.com/scottsweb)
-* Description: Pository: The negative news suppository (Bookmarklet)
+* Description: Pository: The negative news suppository (bookmarklet)
 * Author: [Scott Evans](http://scott.ee)
 * Author URI: [http://scott.ee](http://scott.ee)
 * License: GNU General Public License v2.0
@@ -11,7 +11,7 @@
 
 ## about
 
-Are you fed up of the &lsquo;doom and gloom&rsquo; that is so prolific in our daily news? Make your day a happier one with Pository &reg; : An Internet negativity filter (delivered via bookmarklet), that determines if an online article is worth reading (or not).
+Are you fed up of the &lsquo;doom and gloom&rsquo; that is so prolific in our daily news? Make your day a happier one with Pository &reg;: An Internet negativity filter (delivered via bookmarklet), that determines if an online article is worth reading (or not).
 
 Test it at [pository.scott.ee](http://pository.scott.ee).
 
