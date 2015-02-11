@@ -1,4 +1,4 @@
-![Pository image](http://cloud.scott.ee/images/pository.png)
+![Pository image](http://cloud.scott.ee/images/pository.jpg)
 
 ## Pository
 
